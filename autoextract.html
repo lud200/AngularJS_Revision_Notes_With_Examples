@@ -1,0 +1,36 @@
+<!-- In this example, I updated the data on the DOM API 
+	whenever I type something in the text box. This is done
+	using normal javascript code. 
+-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		One way binding
+		<!-- We are saying this as one way binding because model
+		values are automatically assigned to the HTMl placeholder
+		elements specified through the data binding notion, but 
+		the html values don't change values in the model. -->
+	</title>
+</head>
+<body>
+	Name:<input id="textInput" type="text"/>
+	Hello <span id="nameDiv"></span>!
+
+	<script type="text/javascript">
+	
+	//get the text input element with text id, and auto fill id(nameDiv)
+	
+	var textInputElement = document.getElementById('textInput');
+	var nameDivElement = document.getElementById('nameDiv');
+
+	//In this function, save the text input in to the var text. 
+	//Then the span element is uploaded on to the DOM API directly.
+	
+	textInputElement.addEventListener('keyup', function(){
+		var text = textInputElement.value;
+		nameDivElement.innerHTML = text;
+	});
+	</script>
+</body>
+</html>
