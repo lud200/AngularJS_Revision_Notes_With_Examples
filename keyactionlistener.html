@@ -8,6 +8,7 @@
 <body>
 	Name:<input id="textInput" type="text"/>
     Hello World!
+    
     <!-- Key up event is set to an element when user releases a key on the keyboard.
 		It can be attached to an element but the event is only sent to the element 
 		that has focus. 
@@ -16,6 +17,7 @@
 		to the document object. Because of event bubbling, all key presses will make
 		their way up the DOM to the document object unless explicitly specified.
 	-->
+	
 	<script>
 		var textInputElement = document.getElementById('textInput');
 		textInputElement.addEventListener('keyup', function(){
