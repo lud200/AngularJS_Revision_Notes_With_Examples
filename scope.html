@@ -1,0 +1,49 @@
+<!-- In Angular JS, everything has an associated scope. 
+	Scopes are organized in a hierarchy. 
+
+	There is a root scope($rootScope) which is the parent of
+	all the scopes in an angularJS application and there are scopes
+	created by some directives. 
+
+	Whenever a scope creating directive is encountered in the DOM tree, 
+	a new scope is created.
+
+	Instead of defining model variable directly on $rootScope, we can 
+	group them in the controller using $scope argument. 
+
+	Controller can be defined with the help of "ng-controller" directive
+	specifying the name of Javascript variable representing the controller. 
+
+	A controller creates new scope, so we can define our model variables
+	on that scope. We can also define functions on $scope object. 
+
+	the $scope is associate with the controller. A scope created by angularJS
+	is made available to our controller function through Dependency Injection. 
+
+	Dependency Injection:
+
+	Dependency Injection means that we declare that our funciton depends on the 
+	$scope object and AngularJS should have to assure that the variable is available
+	to use inside the function. 
+
+ -->
+
+ <html ng-app>
+ <head>
+ 	<meta charset="utf-8">
+ 	<title>DependencyInjection</title>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ 	<script>
+ 		function nameCTRL($scope){
+ 			$scope.firstName="Udaya"
+ 			$scope.lastName="Duvvuri"
+ 		}
+ 	</script>
+ </head>
+ <body ng-controller="nameCTRL">
+ 	First Name:<input ng-model="firstName" type="text">
+ 	<br>Last Name: <input ng-model="lastName" type="text">
+ 	<br>
+ 	Hello {{firstName}} {{lastName}}
+ </body>
+ </html>
