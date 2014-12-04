@@ -1,0 +1,43 @@
+<!-- Every HTMl attribute specific to angular js is a directive and has a 
+	specific role in angularJS application. 
+
+	HTML page is known as "template" because its not the final version of what
+	will be rendered on the web browser visible to user. 
+
+	ng-app directive marks the DOM elements that contain the angularJS application
+
+	We can initialize the variables with ng-init directive. 
+	Data binding can be specified in two different ways:
+	using curly braces, using ng-bind directive. ng-bind="var-name"
+
+	We have two way data binding when a model is bound to HTML element that can both 
+	change and display the value of a variable. 
+
+	We can have more than one HTML element bound to same variable. 
+
+	We use ng-model directive to bind model variable to the HTML element that can 
+	not only display the value but also can change it. 
+ -->
+ <html ng-app>
+ <head>
+ 	<meta charset="utf-8">
+ 	<title>First AJS Example</title>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ </head>
+ <body ng-init="firstName='Udaya' ; lastName='Duvvuri'">
+ 	
+ 	<!-- One way data binding 
+
+ 	Here the firstname and lastname elements are initalized to the DOM 
+ 	-->
+ 	<strong>FirstName:</strong>{{firstName}}<br/>
+ 	<strong>LastName:</strong>{{lastName}}<br/>
+
+ 	<!-- Two way data binding 
+ 	
+ 	Whenever there is a change in the input the changes are reflected to the model. 
+ 	-->
+ 	Name:<input ng-model="name" type="text"/>
+ 	Hello {{name}}
+ </body>
+ </html>
