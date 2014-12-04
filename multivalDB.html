@@ -1,0 +1,17 @@
+<!-- We can also perform data binding with multiple input values 
+	Here is an example.
+-->
+
+<html ng-app>
+<head>
+ 	<meta charset="utf-8">
+ 	<title>Data Binding Example</title>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ </head>
+ <body>
+ 	FirstName:<input ng-model="fname" type="text">
+ 	<br><br>LastName:<input ng-model="lname" type="text">
+ 	<br><br><br>
+ 	Hello {{fname}}{{lname}}
+ </body>
+</html>
