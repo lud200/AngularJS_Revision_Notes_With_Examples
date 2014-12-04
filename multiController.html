@@ -1,0 +1,38 @@
+<!-- We can have multiple controllers in the same HTMl file
+	and each one manages its own scope object. 
+
+	We can have two controllers residing in the same model
+	named in same way for both controllers, each residing in their own
+	controllers by avoiding the conflict. 
+ -->
+ <html ng-app>
+ <head>
+ 	<meta charset="utf-8">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ 	<script>
+ 		function firstC($scope){
+ 			$scope.fname="Udaya"
+ 			$scope.lname="Duvvuri"
+ 		}
+
+ 		function secondC($scope){
+ 			$scope.firstn="Kumari"
+ 			$scope.lastn="Duvvuri"
+ 		}
+ 	</script>
+ </head>
+ <body>
+ 	<div ng-controller="firstC">
+ 		<h1>Model Managed by First Controller</h1>
+ 		FirstName: <input ng-model="fname" type="text">
+ 		<br>LastName: <input ng-model="lname" type="text">
+ 		<br>{{fname}} {{lname}}
+ 	</div>
+ 	<div ng-controller="secondC">
+ 		<h2>Model Managed by Second Controller</h2>
+ 		FirstName: <input ng-model="firstn" type="text">
+ 		<br>LastName: <input ng-model="lastn" type="text">
+ 		<br>{{firstn}} {{lastn}}
+ 	</div>
+ </body>
+ </html>
