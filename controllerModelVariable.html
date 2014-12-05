@@ -29,13 +29,15 @@
 
 		var thirdC = function($scope){
 			$scope.t = {
-				mname:"berry"
-				lname:"cherry"
+				mname: "berry",
+				lname: "cherry"
 			};
+
 			$scope.getName = function(){
-				return $scope.f.fname+" "+$scope.t.mname+" "+$scope.t.lname;
+				return $scope.f.fname + " " + $scope.t.mname + " " + $scope.t.lname + " " + $scope.s.lname;
 			};
 		};
+
 	</script>
 </head>
 <body>
@@ -54,7 +56,7 @@
 				<h1>Third Controller</h1>
 				<br>First Name:{{f.fname}}
 				<br>Middle Name:{{t.mname}}
-				<br>Last Name:{{t.lname}}
+				<br>Last Name from Third Controller: {{t.lname}}
 				<br>Last Name from Second Controller: {{s.lname}}
 				<br>Full Name:{{getName()}}
 				<br>Set First Name:<input ng-model="f.fname" type="text">
