@@ -1,0 +1,42 @@
+<!-- Modules allows AngularJS to organize all your data
+	and declare the data in modules to avoid declaring objects
+	and variables in global namespace. 
+
+	Module can be defined by using "angular.module" function.
+	"angular" is global namespace exposed by angularJS and always
+	available. 
+
+	"angular.module" accepts two parameters
+		1. Name of module
+		2. Array of dependencies in other module.
+
+	In this program we define a simple controller. This controller is
+	available in this HTML template.
+ -->
+
+ <html ng-app>
+ <head>
+ 	<meta charset="utf-8">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ 	<script>
+ 		var myModule = function($scope){
+
+ 			$scope.name = {
+ 				fname:"lalitha",
+ 				lname:"subbarao"
+ 			};
+
+ 			$scope.getName = function(){
+ 				return $scope.name.fname+" "+$scope.name.lname;
+ 			};
+
+ 		};
+ 	</script>
+ </head>
+
+ <body ng-controller="myModule">
+ 	FirstName: <input ng-model="name.fname" type="text">
+ 	LastName: <input ng-model="name.lname" type="text">
+ 	Full name: {{getName()}}
+ </body>
+ </html>
