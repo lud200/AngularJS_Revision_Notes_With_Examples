@@ -1,0 +1,67 @@
+<!-- Here we are going to handle the nested controller with the model variables. 
+	In the previous example, we are able to override the values in the parent scope.
+
+	We are going to write a controller program here with model variables so that 
+	we can access the variables at different scope with their respective names and that
+	makes the code look more cleaner. 
+
+ -->
+<html ng-app>
+<head>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script>
+		var firstC = function ($scope)
+		{
+			$scope.f = {
+				fname: "apple"
+			};
+		};
+
+		var secondC = function($scope){
+			$scope.s = {
+				lname: "mango"
+			};
+			$scope.getName = function(){
+				return $scope.f.fname+" "+$scope.s.lname;
+			};
+		};
+
+		var thirdC = function($scope){
+			$scope.t = {
+				mname:"berry"
+				lname:"cherry"
+			};
+			$scope.getName = function(){
+				return $scope.f.fname+" "+$scope.t.mname+" "+$scope.t.lname;
+			};
+		};
+	</script>
+</head>
+<body>
+	<div ng-controller="firstC">
+		<h1>First Controller</h1>
+		<br>First Name:{{f.fname}}
+		<br>Set First Name: <input ng-model="f.fname" type="text">
+		<div ng-controller="secondC">
+			<h1>Second Controller</h1>
+			<br>First Name:{{f.fname}}
+			<br>Last Name:{{s.lname}}
+			<br>Full Name:{{getName()}}
+			<br>Set First Name: <input ng-model="f.fname" type="text">
+			<br>Set Last Name: <input ng-model="s.lname" type="text">
+			<div ng-controller="thirdC">
+				<h1>Third Controller</h1>
+				<br>First Name:{{f.fname}}
+				<br>Middle Name:{{t.mname}}
+				<br>Last Name:{{t.lname}}
+				<br>Last Name from Second Controller: {{s.lname}}
+				<br>Full Name:{{getName()}}
+				<br>Set First Name:<input ng-model="f.fname" type="text">
+				<br>Set Middle Name:<input ng-model="t.mname" type="text">
+				<br>Set Last Name:<input ng-model="t.lname" type="text">
+			</div>
+		</div>
+	</div>
+</body>
+</html> 

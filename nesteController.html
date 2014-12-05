@@ -1,0 +1,69 @@
+<!-- We can also work with nested controllers in AngularJS.
+	
+	Defining variables directly on $scope objects managed by
+	controllers can have unexpected behavior if we don't know
+	how AngularJS works.
+
+	First scope variale fname is extended to the nested controllers. 
+
+	We can also define the controller level variables and this will 
+	over write the values in the parent scope. 
+
+ -->
+
+ <html ng-app>
+ <head>
+ 	<meta charset="utf-8">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ 	<script>
+ 		var firstC = function($scope){
+ 			$scope.fname = "Lakshmi";
+ 		};
+
+ 		var secondC = function ($scope){
+
+ 			$scope.lname = "Duvvuri";
+ 			$scope.getName = function (){
+ 				return $scope.fname + " " + $scope.lname;
+ 			};
+ 		};
+
+ 		var thirdC = function($scope){
+
+ 			$scope.mname = "Udaya";
+ 			$scope.lname = "D";
+
+ 			$scope.getName = function(){
+ 				return $scope.fname + " " + $scope.mname + " " + $scope.lname;
+ 			}
+ 		}
+
+ 	</script>
+ </head>
+ <body>
+ 	<p>Nested controllers with variables</p>
+ 	<div ng-controller="firstC">
+ 		<h1>First Controller</h1>
+ 		FirstName: <input ng-model = "fname" type = "text">
+ 		{{fname}}
+ 		<div ng-controller="secondC">
+ 			<h2>Second Controller</h2>
+ 			FirstName: {{fname}}
+ 			<br>LastName: {{lname}}
+ 			<br>FullName:{{getName()}}
+ 			set FirstName:<input ng-model = "fname" type = "text">
+ 			set LastName: <input ng-model = "lname" type = "text">
+ 		<div ng-controller="thirdC">
+ 			<h3>Third Controller</h3>
+ 			FirstName: {{fname}}
+ 			<br>MiddleName: {{mname}}
+ 			<br>LastName: {{lname}}
+ 			<br>FullName: {{getName()}}
+ 			Set FirstName: <input ng-model = "fname" type = "text">
+ 			Set LastName: <input ng-model = "lname" type = "text">
+ 			Set MiddleName: <input ng-model = "mname" type = "text">
+ 		</div>
+ 		</div>
+ 	</div>
+ </body>
+ </html>
