@@ -1,0 +1,27 @@
+<!-- Here we are going to declare the angularJS module and see how it works. -->
+<html>
+ <head>
+ 	<meta charset="utf-8">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ 	<script>
+ 		angular.module("main", [])
+ 		.controller("myModule", function ($scope){
+ 			$scope.name = {
+ 				fname:"lali",
+ 				lname:"tha",
+ 				getName: function(){
+ 					return this.fname + " " + this.lname;
+ 				}
+ 			};
+ 		});
+ 	</script>
+ </head>
+
+ <body ng-app="main">
+ 	<div ng-controller="myModule">
+ 	FirstName: <input ng-model="name.fname" type="text">
+ 	LastName: <input ng-model="name.lname" type="text">
+ 	Full name: {{name.getName()}}
+ </div>
+ </body>
+ </html>

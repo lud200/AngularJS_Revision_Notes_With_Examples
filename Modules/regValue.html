@@ -1,0 +1,44 @@
+<!-- We are going to register a value to the AngularJS module.
+	In angular modules, we can register object instances and 
+	create instances and then we can have them available through
+	"Dependency Injection".
+
+	We can register an instance through "value" method. Then we can
+	pass this as an argument to the controller function.
+ -->
+
+ <html>
+ <head>
+ 	<meta charset="utf-8">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ 	<script>
+ 		angular.module("regValue", [])
+ 		.value("person", {
+ 			fname:"",
+ 			lname:"",
+ 			getName: function(){
+ 				return this.fname+" "+this.lname;
+ 			}
+ 		})
+ 		.controller("main", function($scope, person){
+ 			person.fname="apple"
+ 			person.lname="pie"
+ 			$scope.p=person;
+ 		});
+ 	</script>
+
+ 	<!-- In this example, we register the object instance with the name person.
+		This will be unique through out the module.
+
+		When we declare main the person object is available through dependency Injection
+		by specifying person as argument of the controller function.
+ 	 -->
+ </head>
+ <body ng-app="regValue">
+ 	<div ng-controller="main">
+ 		First Name: <input ng-model="p.fname" type="text">
+ 		Last Name: <input ng-model="p.lname" type="text">
+ 		Full Name: {{p.getName()}}
+ 	</div>
+ </body>
+ </html>
