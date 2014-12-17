@@ -1,37 +1,40 @@
-<!--  Service is a angularJS singleton Javascript object which contains
-	a set of functions. This function contains what ever logic is needed
-	to carry out. 
-
-	We can use service method on a module. 
-
-	Services are defined differently than values(in previous example regValue)
-	Services are defined as a seperate named function. Services are created with 
-	"new" keyword.
-
--->
-<html ng-app>
+<html>
 <head>
 	<meta charset="utf-8">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-	<script>
-		var manager=function(a){
-			// personManagerInstance.personInstance.firstName
-			this.i=a;
-		};
-		manager.prototype.getFirstName = function(){
-			return this.i.fname;
-		};
-		manager.prototype.getLastName = function(){
-			return this.i.lname;
-		};
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+ 	<script>
+ 		var Person = function(person){
+ 			this.instance=person;
+ 		};
 
-	</script>
+ 		Person.prototype.getfname = function(){
+ 			return this.instance.fname;
+ 		};
+
+ 		Person.prototype.getlname = function(){
+ 			return this.instance.lname;
+ 		};
+
+ 		angular.module("main", [])
+ 		.value("person", {
+ 			fname:"",
+ 			lname:""
+ 		})
+ 		.service("personManager", Person)
+ 		.controller("controller", function ($scope, person, personManager){
+ 			person.fname="john";
+ 			person.lname="doe";
+ 			$scope.managerInstance=personManager;
+ 		});
+ 	</script>
 </head>
-<body ng-controller="regService">
-	First Name: {{person.getFirstName()}}
-	<br>Last Name: {{person.getLastName()}}
-	<br>set first name: <input ng-model="person.i.fname" type="text">
-	<br>set last name: <input ng-model="person.i.lname" type="text">
-
+  
+<body ng-app="main">
+	<div ng-controller="controller">
+		First Name:{{managerInstance.getfname()}}
+		<br>Last Name:{{managerInstance.getlname()}}
+		<br>Set First Name:<input type="text" ng-model="managerInstance.instance.fname"/>
+		<br>Set Last Name:<input type="text" ng-model="managerInstance.instance.lname"/>
+	</div>
 </body>
 </html>
