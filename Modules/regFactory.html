@@ -1,0 +1,41 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	
+	<script>
+		var PersonManager = function (person){
+			var instance = person;
+
+			return {
+				getfname: function(){
+					return instance.fname;
+				},
+				getlname: function(){
+					return instance.lname;
+				}
+			};
+		};
+		angular.module("main", [])
+		.value("person", {
+			fname:"",
+			lname:""
+		})
+		.factory("manager", PersonManager)
+		.controller("controller", function ($scope, person, manager){
+			person.fname="apple"
+			person.lname="pie"
+			$scope.instance=person;
+			$scope.personManager=manager;
+		})
+	</script>
+
+</head>
+<body ng-app="main">
+	<div ng-controller="controller">
+		First Name:{{personManager.getfname()}}
+		<br>Last Name:{{personManager.getlname()}}
+		<br>set First Name: <input type="text" ng-model="instance.fname">
+		<br>set Last Name: <input type="text" ng-model="instance.lname">
+	</div>
+</body>
+</html>
